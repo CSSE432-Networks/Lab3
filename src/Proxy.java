@@ -22,7 +22,6 @@ public class Proxy {
 
         try {
             serverSocket = new ServerSocket(port);
-            serverSocket.setSoTimeout(10000);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -32,7 +31,7 @@ public class Proxy {
     public void start() throws IOException {
         while (true) {
             Socket sock = serverSocket.accept();
-            new ProxyThread(sock).run();
+            new ProxyThread(sock).start();
         }
     }
 }
